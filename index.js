@@ -1,5 +1,6 @@
 import express from "express";
 import userRouter from "./routes/users.js";
+import stockRouter from "./routes/stock.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -7,7 +8,6 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 dotenv.config();
-
 
 const connect = async () => {
   try {
@@ -29,9 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", userRouter);
+app.use("/", stockRouter);
 
-app.use(errorHandler)
-
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 
