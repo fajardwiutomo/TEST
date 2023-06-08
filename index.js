@@ -1,6 +1,5 @@
 import express from "express";
 import userRouter from "./routes/users.js";
-import movieRouter from "./routes/movie.js"
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -12,7 +11,7 @@ dotenv.config();
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_DB);
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("connected MONGO DB");
   } catch (error) {
     throw error;
