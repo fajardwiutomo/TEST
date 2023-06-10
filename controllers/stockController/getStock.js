@@ -24,9 +24,12 @@ export const getStock = async (req, res) => {
       filterResult1 = stock;
     }
 
+    // getTotalDocument
+    const totalDocuments = await Stock.countDocuments();
+
     // Use `slice` to paginate the results
     const filterResult = filterResult1.slice(startIndex, endIndex);
-    res.status(200).json(filterResult);
+    res.status(200).json({ totalDocuments, filterResult });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
