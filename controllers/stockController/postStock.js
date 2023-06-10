@@ -3,7 +3,7 @@ import Stock from "../../models/stock/Stock.js";
 export const postStock = async (req, res) => {
   try {
     const { picture, name, priceBuy, priceSell, stock } = req.body;
-    const newStock = await new Stock({
+    const newStock = new Stock({
       picture,
       name,
       priceBuy,
